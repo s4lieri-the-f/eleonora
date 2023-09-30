@@ -1,0 +1,158 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url("Montserrat-Thin.ttf") format("truetype");
+}
+
+html {
+    background-color: #7d8ce2;
+    font-family: 'Montserrat';
+}
+
+header {
+    background-color: #475396;
+    color: #fff;
+    padding: 10px 0;
+    margin: -10px;
+    text-align: center;
+}
+
+button {
+    border-radius: 25px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #5b69b9;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #7281d4;
+}
+
+.select-dropdown {
+    border-radius: 25px;
+    display: flex;
+    text-align: center;
+    position: relative;
+    margin-top: 5px;
+}
+
+.select-dropdown select {
+    background-color: white;
+    padding: 10px;
+    margin-top: 0px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.select-dropdown select::after {
+    content: '\f0de';
+    font-family: FontAwesome;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+}
+
+.select-dropdown select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.7);
+}
+
+/* Style for the dropdown options */
+.select-dropdown select option {
+    background-color: white;
+    color: #333;
+}
+
+.select-dropdown select option:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+.calendar {
+    font-family: Arial, sans-serif;
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 25%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.calendar-days {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.calendar-day {
+    width: 14.28%;
+    padding: 10px 0;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+}
+
+div.date{
+    position: relative;
+    margin-top: 35px;
+}
+
+.dateInput {
+    padding: 10px;
+    
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+/* Style for the date input when focused */
+.dateInput:focus {
+    outline: none;
+    
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.7);
+    border-radius: 25px;
+}
+
+.button-over-input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.date-container {
+    margin-top: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+h2 {
+    padding-top: 20px;
+}
+
+.centered-container {
+    position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+}
+
+.submit-menu {
+    margin-top: 20px;
+    display: flex;
+        text-align: center;
+        position: relative;
+}
