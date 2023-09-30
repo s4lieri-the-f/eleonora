@@ -5,6 +5,30 @@
     <title>eleonora</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./styles.css">
+    <script>
+        function add_element(){
+        document.getElementById('add-field-btn').addEventListener('click', function () {
+                // Get the container that holds the fields
+                var container = document.getElementById('centered-container');
+
+                // Create a new div to hold the new set of fields
+                var newFieldDiv = document.createElement('div');
+                newFieldDiv.className = 'select-dropdown';
+                var nameInput = document.createElement('input');
+                nameInput.type = 'text';
+                nameInput.placeholder = 'Name of the product';
+                newFieldDiv.appendChild(nameInput);
+
+                // Create and append new input for amount
+                var amountInput = document.createElement('input');
+                amountInput.type = 'number';
+                amountInput.placeholder = 'Amount';
+                newFieldDiv.appendChild(amountInput);
+
+                // Append the new field div to the container
+                container.appendChild(newFieldDiv);
+            });}
+    </script>
 </head>
 
 <body>
@@ -13,7 +37,20 @@
         <button onclick="window.location.href='prod_table.html'">Продукты в холодильнике</button>
         <button onclick="window.location.href='recipies.html'">Рецепты</button>
     </header>
-    ЧЛЕНЫ
+    <div class="centered-container" id="centered-container">
+        <h1>Добавить рецепт:</h1>
+        <label>Название: </label>
+        <input type="text" class="recipe-name" id="recipe-name" name="recipe">
+        <div class="select-dropdown">
+            <select title="Ингридиент" id="monday" name="Завтрак">
+                <option value="i1" selected="selected">Макароны</option>
+                <option value="i2">Деньги</option>
+                <option value="i3">...</option>
+            </select>
+            <input type="number" class="ingin" id="quantity" name="quantity" min="1">
+        </div>
+        <button class="rounded-plus-button" id="add-field-btn" onclick="add_element();"></button>
+    </div>
 </body>
 
 </html>
