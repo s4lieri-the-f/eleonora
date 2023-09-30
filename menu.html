@@ -1,91 +1,119 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>eleonora</title>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="./styles.css">
-    </head>
 
-    <body>
-        <header>
-            <button onclick="window.location.href='menu.html'">Меню</button>
-            <button onclick="window.location.href='prod_table.html'">Продукты в холодильнике</button>
-            <button onclick="window.location.href='recipies.html'">Рецепты</button>
-        </header>
-        <div class="centered-container">
-            <div class="date-container">
-                <button class="button-over-input">7 дней</button>
-                <div class="date">
-                    <input type="date" class="dateInput" name="dateInput"> — <input type="date" class="dateInput" name="dateInput">
-                </div>
+<head>
+    <title>eleonora</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <header>
+        <button onclick="window.location.href='menu.html'">Меню</button>
+        <button onclick="window.location.href='prod_table.html'">Продукты в холодильнике</button>
+        <button onclick="window.location.href='recipies.html'">Рецепты</button>
+    </header>
+    <div class="centered-container">
+        <div class="date-container">
+            <button class="button-over-input" onclick="updateEndDate()">7 дней</button>
+            <div class="date">
+                <input type="date" class="dateInput" name="startDate" id="startDate" onchange="handleDateChange()"> —
+                <input type="date" class="dateInput" name="endDate" id="endDate">
             </div>
-            <h2>Завтрак</h2>
-            <div class="select-dropdown">
-                <select id="monday" name="Завтрак">
-                    <option value="dish1" selected="selected">Макаронный монстр</option>
-                    <option value="dish2">Слишком дорогое блюдо</option>
-                    <option value="dish3">...</option>
-                </select>
-            </div>
-            <div class="select-dropdown">
-                <select id="monday" name="Завтрак">
-                    <option value="dish1" selected="selected">Макаронный монстр</option>
-                    <option value="dish2">Слишком дорогое блюдо</option>
-                    <option value="dish3">...</option>
-                </select>
-            </div>
-            <div class="select-dropdown">
-                <select id="monday" name="Завтрак">
-                    <option value="dish1" selected="selected">Макаронный монстр</option>
-                    <option value="dish2">Слишком дорогое блюдо</option>
-                    <option value="dish3">...</option>
-                </select>
-            </div>
-            <h2>Обед</h2>
-            <div class="select-dropdown">
-                <select id="monday" name="Завтрак">
-                    <option value="dish1" selected="selected">Макаронный монстр</option>
-                    <option value="dish2">Слишком дорогое блюдо</option>
-                    <option value="dish3">...</option>
-                </select>
-            </div>
-            <div class="select-dropdown">
-                <select id="monday" name="Завтрак">
-                    <option value="dish1" selected="selected">Макаронный монстр</option>
-                    <option value="dish2">Слишком дорогое блюдо</option>
-                    <option value="dish3">...</option>
-                </select>
-            </div>
-            <div class="select-dropdown">
-                <select id="monday" name="Завтрак">
-                    <option value="dish1" selected="selected">Макаронный монстр</option>
-                    <option value="dish2">Слишком дорогое блюдо</option>
-                    <option value="dish3">...</option>
-                </select>
-            </div>
-            <h2>Ужин</h2>
-            <div class="select-dropdown">
-                <select id="monday" name="Завтрак">
-                    <option value="dish1" selected="selected">Макаронный монстр</option>
-                    <option value="dish2">Слишком дорогое блюдо</option>
-                    <option value="dish3">...</option>
-                </select>
-            </div>
-            <div class="select-dropdown">
-                <select id="monday" name="Завтрак">
-                    <option value="dish1" selected="selected">Макаронный монстр</option>
-                    <option value="dish2">Слишком дорогое блюдо</option>
-                    <option value="dish3">...</option>
-                </select>
-            </div>
-            <div class="select-dropdown">
-                <select id="monday" name="Завтрак">
-                    <option value="dish1" selected="selected">Макаронный монстр</option>
-                    <option value="dish2">Слишком дорогое блюдо</option>
-                    <option value="dish3">...</option>
-                </select>
-            </div>
-            <button class="submit-menu">Отправить меню</button>
+            <label><input type="checkbox" id="autoUpdate" checked> Update end date automatically</label>
         </div>
-    </body>
+        <h2>Завтрак</h2>
+        <div class="select-dropdown">
+            <select id="monday" name="Завтрак">
+                <option value="dish1" selected="selected">Макаронный монстр</option>
+                <option value="dish2">Слишком дорогое блюдо</option>
+                <option value="dish3">Голодовка</option>
+            </select>
+        </div>
+        <div class="select-dropdown">
+            <select id="monday" name="Завтрак">
+                <option value="dish1" selected="selected">Макаронный монстр</option>
+                <option value="dish2">Слишком дорогое блюдо</option>
+                <option value="dish3">Голодовка</option>
+            </select>
+        </div>
+        <div class="select-dropdown">
+            <select id="monday" name="Завтрак">
+                <option value="dish1" selected="selected">Макаронный монстр</option>
+                <option value="dish2">Слишком дорогое блюдо</option>
+                <option value="dish3">Голодовка</option>
+            </select>
+        </div>
+        <h2>Обед</h2>
+        <div class="select-dropdown">
+            <select id="monday" name="Завтрак">
+                <option value="dish1" selected="selected">Макаронный монстр</option>
+                <option value="dish2">Слишком дорогое блюдо</option>
+                <option value="dish3">Голодовка</option>
+            </select>
+        </div>
+        <div class="select-dropdown">
+            <select id="monday" name="Завтрак">
+                <option value="dish1" selected="selected">Макаронный монстр</option>
+                <option value="dish2">Слишком дорогое блюдо</option>
+                <option value="dish3">Голодовка</option>
+            </select>
+        </div>
+        <div class="select-dropdown">
+            <select id="monday" name="Завтрак">
+                <option value="dish1" selected="selected">Макаронный монстр</option>
+                <option value="dish2">Слишком дорогое блюдо</option>
+                <option value="dish3">Голодовка</option>
+            </select>
+        </div>
+        <h2>Ужин</h2>
+        <div class="select-dropdown">
+            <select id="monday" name="Завтрак">
+                <option value="dish1" selected="selected">Макаронный монстр</option>
+                <option value="dish2">Слишком дорогое блюдо</option>
+                <option value="dish3">Голодовка</option>
+            </select>
+        </div>
+        <div class="select-dropdown">
+            <select id="monday" name="Завтрак">
+                <option value="dish1" selected="selected">Макаронный монстр</option>
+                <option value="dish2">Слишком дорогое блюдо</option>
+                <option value="dish3">Голодовка</option>
+            </select>
+        </div>
+        <div class="select-dropdown">
+            <select id="monday" name="Завтрак">
+                <option value="dish1" selected="selected">Макаронный монстр</option>
+                <option value="dish2">Слишком дорогое блюдо</option>
+                <option value="dish3">Голодовка</option>
+            </select>
+        </div>
+        <button class="submit-menu">Отправить меню</button>
+    </div>
+</body>
+
+<script>
+    function updateEndDate() {
+        const startDateInput = document.getElementById('startDate');
+        const endDateInput = document.getElementById('endDate');
+        const startDate = new Date(startDateInput.value);
+        const endDate = new Date(startDate.getTime() + (7 * 24 * 60 * 60 * 1000)); // adding 7 days
+        const endDateFormat = new Date(endDate.getTime() - (endDate.getTimezoneOffset() * 60000))
+            .toISOString()
+            .split("T")[0];
+        endDateInput.value = endDateFormat;
+    }
+
+    function handleDateChange() {
+        const autoUpdate = document.getElementById('autoUpdate');
+        // Check if auto-update is checked
+        if (autoUpdate.checked) {
+            updateEndDate();
+        }
+    }
+</script>
+
+
+
+
 </html>

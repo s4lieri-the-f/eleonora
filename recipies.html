@@ -6,28 +6,58 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./styles.css">
     <script>
-        function add_element(){
-        document.getElementById('add-field-btn').addEventListener('click', function () {
-                // Get the container that holds the fields
-                var container = document.getElementById('centered-container');
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('add-field-btn').addEventListener('click', add_element);
+            document.getElementById('save-btn').addEventListener('click', save_recipe);
+        });
 
-                // Create a new div to hold the new set of fields
-                var newFieldDiv = document.createElement('div');
-                newFieldDiv.className = 'select-dropdown';
-                var nameInput = document.createElement('input');
-                nameInput.type = 'text';
-                nameInput.placeholder = 'Name of the product';
-                newFieldDiv.appendChild(nameInput);
+        function add_element() {
+            // Get the container that holds the fields
+            var container = document.getElementById('centered-container');
 
-                // Create and append new input for amount
-                var amountInput = document.createElement('input');
-                amountInput.type = 'number';
-                amountInput.placeholder = 'Amount';
-                newFieldDiv.appendChild(amountInput);
+            // Create a new div to hold the new set of fields
+            var newFieldDiv = document.createElement('div');
+            newFieldDiv.className = 'select-dropdown';
 
-                // Append the new field div to the container
-                container.appendChild(newFieldDiv);
-            });}
+            // Create and append new select element
+            var selectInput = document.createElement('select');
+            selectInput.title = "Ингридиент";
+            selectInput.name = "Завтрак";
+
+            // Add options to the select element
+            var options = ['Макароны', 'Деньги', '...'];
+            options.forEach(function (optionText, index) {
+                var option = document.createElement('option');
+                option.value = 'i' + (index + 1);
+                option.text = optionText;
+                selectInput.appendChild(option);
+            });
+
+            newFieldDiv.appendChild(selectInput);
+
+            // Create and append new input for amount
+            var amountInput = document.createElement('input');
+            amountInput.type = 'number';
+            amountInput.className = 'ingin';
+            amountInput.id = 'quantity';  // Be aware that using the same ID for multiple elements is invalid HTML
+            amountInput.name = 'quantity';
+            amountInput.min = '1';
+            newFieldDiv.appendChild(amountInput);
+
+            // Append the new field div to the container
+            container.appendChild(newFieldDiv);
+        }
+
+
+        function save_recipe() {
+            var container = document.getElementById('centered-container');
+            var dynamicFields = document.getElementsByClassName('select-dropdown');
+            while (dynamicFields[0]) {
+                dynamicFields[0].parentNode.removeChild(dynamicFields[0]);
+            }
+            document.getElementById('recipe-name').value = '';
+            add_element();
+        }
     </script>
 </head>
 
@@ -49,7 +79,10 @@
             </select>
             <input type="number" class="ingin" id="quantity" name="quantity" min="1">
         </div>
-        <button class="rounded-plus-button" id="add-field-btn" onclick="add_element();"></button>
+    </div>
+    <div class="button-container">
+        <button class="rounded-plus-button" id="add-field-btn">+</button>
+        <button class="rounded-plus-button" id="save-btn">Save</button>
     </div>
 </body>
 

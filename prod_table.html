@@ -21,6 +21,7 @@
                     <th>Количество в холодильнике</th>
                     <th>Потребуется на неделю</th>
                     <th>Заказано</th>
+                    <th>Действия</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,15 +30,77 @@
                     <td>72 литра</td>
                     <td>12 мл</td>
                     <td>0 литров</td>
+                    <td>
+                        <button onclick="removeProduct(this)">Удалить</button>
+                    </td>
                 </tr>
                 <tr>
                     <td>Сушеные финики</td>
                     <td>-7 штук</td>
                     <td>42 штуки</td>
                     <td>49 штук</td>
+                    <td>
+                        <button onclick="removeProduct(this)">Удалить</button>
+                    </td>
                 </tr>
             </tbody>
         </table>
+        <div class="order-container">
+            <label for="productToOrder">Продукт для заказа:</label>
+            <select id="productToOrder" class="select-dropdown">
+                <!-- Add product options here -->
+                <option value="Молоко">Молоко</option>
+                <option value="Финики">Финики</option>
+                <option value="Финики">Макароны</option>
+                <option value="Финики">Прочие вкусности</option>
+                <!-- ... -->
+            </select>
+            <button onclick="orderProduct()">Заказать</button>
+        </div>
+    </div>
+
+    <script>
+        function orderProduct() {
+            let selectedProduct = document.getElementById('productToOrder').value;
+            let fridgeAmount = Math.floor(Math.random() * 100) + 1;
+            let weeklyNeed = prompt("Потребуется на неделю:");
+            let orderedAmount = Math.floor(Math.random() * 100) + 1;
+
+            // Proceed if all input are provided...
+            if (fridgeAmount !== null && weeklyNeed !== null && orderedAmount !== null) {
+                let table = document.querySelector('.database-table tbody'); // Here's the change
+                let newRow = table.insertRow(table.rows.length);
+
+                let cell1 = newRow.insertCell(0);
+                let cell2 = newRow.insertCell(1);
+                let cell3 = newRow.insertCell(2);
+                let cell4 = newRow.insertCell(3);
+                let cell5 = newRow.insertCell(4);
+
+                cell1.innerHTML = selectedProduct; // Here's the change
+                cell2.innerHTML = fridgeAmount;
+                cell3.innerHTML = weeklyNeed;
+                cell4.innerHTML = orderedAmount;
+
+                // Add "Удалить" button
+                let deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Удалить';
+                deleteButton.onclick = function () {
+                    removeProduct(deleteButton);
+                };
+                cell5.appendChild(deleteButton);
+            }
+        }
+
+        function removeProduct(buttonElement) {
+            if (confirm("Вы уверены, что хотите удалить этот продукт?")) {
+                buttonElement.parentElement.parentElement.remove();
+            }
+        }
+    </script>
+</body>
+
+</html>
 </body>
 
 </html>
